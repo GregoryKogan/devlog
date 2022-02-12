@@ -1,4 +1,4 @@
-# devblog
+# devlog
 
 ## Project setup
 ```
