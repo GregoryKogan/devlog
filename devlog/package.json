@@ -9,6 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "highlight.js": "^11.4.0",
+    "marked": "^4.0.12",
+    "pygmentize-bundled": "^2.3.0",
+    "raw-loader": "^4.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuesax": "^4.0.1-alpha.25",
@@ -30,7 +34,6 @@
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-vuetify": "~2.4.5",
-    "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.7.0"
   }
 }
