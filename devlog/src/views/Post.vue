@@ -3,6 +3,8 @@
     <div style="height: 10px"></div>
     <div v-html="markdownToHtml"></div>
     <div style="height: 30px"></div>
+    <BackButton />
+    <div style="height: 30px"></div>
   </div>
 </template>
 
@@ -10,9 +12,11 @@
 import { marked } from "marked";
 import highlight from "highlight.js";
 import "highlight.js/styles/shades-of-purple.css";
+import BackButton from "@/components/BackButton.vue";
 
 export default {
   name: "Post",
+  components: { BackButton },
   data: () => ({
     postName: undefined,
     markdownSource: undefined,
