@@ -23,4 +23,4 @@ while markdown_syntax < OVER9000:
 
 ## Thats pretty much sums it up
 
-### Thanks
+### Thanks 😃

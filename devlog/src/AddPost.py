@@ -12,8 +12,8 @@ new_posts = []
 with open(f'{getcwd()}/src/postsData.json') as posts_data_file:
     posts_data = load(posts_data_file)
 old_posts = []
-for post in posts_data:
-    old_posts.append(post["file"])
+for post_file in posts_data:
+    old_posts.append(post_file)
 for post in posts:
     if post not in old_posts:
         new_posts.append(post)
@@ -27,12 +27,11 @@ for post in new_posts:
     image = input("Image: ")
     post_data = {
         "title": title,
-        "file": post,
         "tags": tags,
         "image": image,
         "timestamp": datetime.now().strftime("%H:%M %A, %-d %b")
     }
-    posts_data.append(post_data)
+    posts_data[post] = post_data
     print("Post added!")
 
 with open(f'{getcwd()}/src/postsData.json', 'w') as posts_data_file:

@@ -1,8 +1,12 @@
 <template>
   <div class="home-page">
     <h1 style="margin-bottom: 20px; margin-top: 10px">Devlog</h1>
-    <div v-for="data in postsData" :key="data.timestamp">
-      <PostPreview :post="data" style="margin-left: auto; margin-right: auto" />
+    <div v-for="key in Object.keys(postsData)" :key="key">
+      <PostPreview
+        :post="postsData[key]"
+        :file="key"
+        style="margin-left: auto; margin-right: auto"
+      />
       <div style="height: 50px"></div>
     </div>
   </div>
