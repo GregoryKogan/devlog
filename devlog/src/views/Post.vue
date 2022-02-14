@@ -10,9 +10,24 @@
 
 <script>
 import { marked } from "marked";
-import highlight from "highlight.js";
-import "highlight.js/styles/shades-of-purple.css";
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs/components/prism-python.min.js";
+import "prismjs/components/prism-markup-templating.min.js";
 import BackButton from "@/components/BackButton.vue";
+
+Prism.highlightAll();
+
+marked.setOptions({
+  langPrefix: "language-",
+  pedantic: false,
+  gfm: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false,
+});
 
 export default {
   name: "Post",
@@ -28,21 +43,7 @@ export default {
   },
   computed: {
     markdownToHtml() {
-      return marked(this.markdownSource, {
-        renderer: new marked.Renderer(),
-        highlight: function (code, lang) {
-          const language = highlight.getLanguage(lang) ? lang : "plaintext";
-          return highlight.highlight(code, { language }).value;
-        },
-        langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
-        pedantic: false,
-        gfm: true,
-        breaks: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: false,
-        xhtml: false,
-      });
+      return marked.parse(this.markdownSource);
     },
   },
 };
@@ -73,22 +74,32 @@ export default {
   box-shadow: 5px 5px 10px #13131b, -5px -5px 10px #212331;
 }
 
-.post-page .hljs-number {
-  color: #ff9e64;
-}
-.post-page .hljs-keyword {
-  color: #bb9af7;
-}
 .post-page pre {
   font-size: 17px;
   background-color: #24283b;
   border-radius: 20px;
-  color: #7aa2f7;
+  color: #a9b1d6;
   margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
   border: solid 2px #414868;
   box-shadow: 5px 5px 10px #13131b, -5px -5px 10px #212331;
+}
+.theme--dark.v-application code {
+  background-color: #ffffff00;
+  padding: 0;
+}
+code .token.number {
+  color: #ff9e64;
+}
+code .token.keyword {
+  color: #bb9af7;
+}
+code .token.operator {
+  color: #2ac3de;
+}
+code .token.punctuation {
+  color: #2ac3de;
 }
 
 .post-page img {

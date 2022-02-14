@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "highlight.js": "^11.4.0",
     "marked": "^4.0.12",
+    "prismjs": "^1.26.0",
     "pygmentize-bundled": "^2.3.0",
     "raw-loader": "^4.0.2",
     "vue": "^2.6.11",
