@@ -16,8 +16,6 @@ import "prismjs/components/prism-python.min.js";
 import "prismjs/components/prism-markup-templating.min.js";
 import BackButton from "@/components/BackButton.vue";
 
-Prism.highlightAll();
-
 marked.setOptions({
   langPrefix: "language-",
   pedantic: false,
@@ -40,6 +38,9 @@ export default {
     this.postName = this.$route.params.postName;
     const markdownSource = require(`@/posts/${this.$route.params.postName}`);
     this.markdownSource = markdownSource.default;
+  },
+  mounted() {
+    Prism.highlightAll();
   },
   computed: {
     markdownToHtml() {
