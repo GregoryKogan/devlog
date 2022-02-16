@@ -11,6 +11,7 @@
 <script>
 import BackButton from "@/components/BackButton.vue";
 import { marked } from "marked";
+import emoji from "node-emoji";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/components/prism-markup-templating.min.js";
@@ -76,6 +77,8 @@ export default {
     this.postName = this.$route.params.postName;
     const markdownSource = require(`@/posts/${this.$route.params.postName}`);
     this.markdownSource = markdownSource.default;
+    const replacer = (match) => emoji.emojify(match);
+    this.markdownSource = this.markdownSource.replace(/(:.*:)/g, replacer);
     window.addEventListener("resize", this.resizeHandler);
   },
   destroyed() {
@@ -84,6 +87,11 @@ export default {
   mounted() {
     Prism.highlightAll();
     this.codeOverflow();
+
+    let checkboxes = document.getElementsByTagName("input");
+    for (let i = 0; i < checkboxes.length; ++i) {
+      checkboxes[i].style.backgroundColor = "#f6ca09";
+    }
   },
   computed: {
     markdownToHtml() {
@@ -117,6 +125,7 @@ export default {
 .post-page blockquote {
   width: 90%;
   font-size: 17px;
+  margin-bottom: 10px;
   padding-left: 10px;
   padding-top: 5px;
   padding-right: 10px;
