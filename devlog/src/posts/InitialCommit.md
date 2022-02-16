@@ -1,26 +1,108 @@
-# Initial commit
+# The largest heading
 
-> *That's a problem for future Homer. Man, I don't envy that guy!*
->
-> — Homer Simpson
+## The second largest heading
 
-```python
-OVER9000 = 9000
-markdown_syntax = 0
-while markdown_syntax < OVER9000:
-    blog()
-    markdown_syntax += 1
+### Headings 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### The smallest heading
+
+Text that is not a quote
+
+> Text that is a quote
+
+Use `git status` to list all new or modified files that haven't yet been committed.
+
+Some basic Git commands are:
+
+```git
+git status
+git add
+git commit
 ```
 
-- First item
-- Second item
-- Third item
-  - Indented item
-  - Indented item
-- Fourth item
+```python
+from os import listdir, getcwd
+from os.path import isfile, join
+from json import dump, load
+from datetime import datetime
 
-![Eren, the fucking MADLAD](https://www.denofgeek.com/wp-content/uploads/2019/11/Attack-on-Titan-Season-4-Release-Date-Trailer-News.jpg)
 
-## Thats pretty much sums it up
+POSTS_DIR = f"{getcwd()}/src/posts/"
 
-### Thanks 😃
+posts = [f for f in listdir(POSTS_DIR) if isfile(join(POSTS_DIR, f))]
+
+new_posts = []
+with open(f'{getcwd()}/src/postsData.json') as posts_data_file:
+    posts_data = load(posts_data_file)
+old_posts = []
+for post_file in posts_data:
+    old_posts.append(post_file)
+for post in posts:
+    if post not in old_posts:
+        new_posts.append(post)
+
+print(f"{len(new_posts)} new posts found!")
+
+for post in new_posts:
+    print(f"New post: {post}")
+    title = input("Title: ")
+    tags = list(input("Tags: ").split(', '))
+    image = input("Image: ")
+    post_data = {
+        "title": title,
+        "tags": tags,
+        "image": image,
+        "timestamp": datetime.now().strftime("%H:%M %A, %-d %b")
+    }
+    posts_data[post] = post_data
+    print("Post added!")
+
+with open(f'{getcwd()}/src/postsData.json', 'w') as posts_data_file:
+    dump(posts_data, posts_data_file, ensure_ascii=False, indent=2)
+```
+
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit dignissim sodales ut eu sem integer vitae justo. Metus aliquam eleifend mi in. Est placerat in egestas erat imperdiet sed euismod. Accumsan lacus vel facilisis volutpat est. Id donec ultrices tincidunt arcu non sodales neque. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Turpis egestas integer eget aliquet nibh praesent tristique. Elit pellentesque habitant morbi tristique. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Aliquet enim tortor at auctor urna nunc.
+
+Scelerisque in dictum non consectetur a erat nam. Purus sit amet luctus venenatis lectus. Semper eget duis at tellus at urna condimentum mattis. Feugiat in ante metus dictum at tempor commodo ullamcorper a. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Lorem ipsum dolor sit amet consectetur adipiscing elit. Euismod quis viverra nibh cras pulvinar mattis nunc sed. Facilisis volutpat est velit egestas dui id ornare arcu. Faucibus pulvinar elementum integer enim neque volutpat. Sem nulla pharetra diam sit. Purus sit amet luctus venenatis lectus magna. Fermentum iaculis eu non diam.
+
+- George Washington
+- John Adams
+- Thomas Jefferson
+
+1. James Madison
+2. James Monroe
+3. John Quincy Adams
+
+4. First list item
+   - First nested list item
+     - Second nested list item
+
+- [x] #739
+- [ ] <https://github.com/octo-org/octo-repo/issues/740>
+- [ ] Add delight to the experience when all tasks are complete :tada:
+
+@octocat :+1: This PR looks great - it's ready to merge! :shipit:
+
+Here is a simple footnote[^1].
+
+A footnote can also have multiple lines[^2].  
+
+You can also use words, to fit your writing style more closely[^note].
+
+[^1]: My reference.
+[^2]: Every new line should be prefixed with 2 spaces.  
+  This allows you to have a footnote with multiple lines.
+[^note]:
+    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
+    This footnote also has been made with a different syntax using 4 spaces for new lines.
+
+```bash
+$ echo "hello world"
+hello world
+```
