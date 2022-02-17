@@ -1,5 +1,13 @@
 <template>
   <div class="post-page">
+    <div style="height: 5px"></div>
+    <h1>{{ title }}</h1>
+    <span style="font-size: 18px">{{ timestamp }}</span>
+    <v-chip-group column>
+      <v-chip v-for="tag in tags" :key="tag" color="#bb9af7" outlined>{{
+        tag
+      }}</v-chip>
+    </v-chip-group>
     <div style="height: 10px"></div>
     <div v-html="markdownToHtml"></div>
     <div style="height: 30px"></div>
@@ -10,6 +18,7 @@
 
 <script>
 import BackButton from "@/components/BackButton.vue";
+import postsDataJson from "@/postsData.json";
 import { marked } from "marked";
 import emoji from "node-emoji";
 import Prism from "prismjs";
@@ -47,8 +56,10 @@ export default {
   name: "Post",
   components: { BackButton },
   data: () => ({
-    postName: undefined,
     markdownSource: undefined,
+    title: undefined,
+    timestamp: undefined,
+    tags: [],
   }),
   methods: {
     isXOverflown(element) {
@@ -74,7 +85,9 @@ export default {
     },
   },
   created() {
-    this.postName = this.$route.params.postName;
+    this.title = postsDataJson[this.$route.params.postName].title;
+    this.timestamp = postsDataJson[this.$route.params.postName].timestamp;
+    this.tags = postsDataJson[this.$route.params.postName].tags;
     const markdownSource = require(`@/posts/${this.$route.params.postName}`);
     this.markdownSource = markdownSource.default;
     const replacer = (match) => emoji.emojify(match);
@@ -88,9 +101,19 @@ export default {
     Prism.highlightAll();
     this.codeOverflow();
 
-    let checkboxes = document.getElementsByTagName("input");
-    for (let i = 0; i < checkboxes.length; ++i) {
-      checkboxes[i].style.backgroundColor = "#f6ca09";
+    let inputs = document.getElementsByTagName("input");
+    while (inputs.length > 0) {
+      for (let i = 0; i < inputs.length; ++i) {
+        if (inputs[i].type == "checkbox") {
+          if (inputs[i].checked)
+            inputs[i].outerHTML =
+              "<span style='color: #00ff00; font-size: 25px'>✔</span>";
+          else
+            inputs[i].outerHTML =
+              "<span style='color: #ff0000; font-size: 25px'>✘</span>";
+        }
+      }
+      inputs = document.getElementsByTagName("input");
     }
   },
   computed: {
@@ -116,10 +139,6 @@ export default {
   .post-page {
     font-size: 18px;
   }
-}
-
-.post-page h1 {
-  font-size: 40px;
 }
 
 .post-page blockquote {
