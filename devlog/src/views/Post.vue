@@ -67,6 +67,11 @@ export default {
     timestamp: undefined,
     tags: [],
   }),
+  computed: {
+    markdownToHtml() {
+      return marked.parse(this.markdownSource);
+    },
+  },
   methods: {
     isXOverflown(element) {
       return element.scrollWidth > element.clientWidth;
@@ -89,15 +94,61 @@ export default {
     resizeHandler() {
       this.codeOverflow();
     },
+    replaceCheckboxes() {
+      let inputs = document.getElementsByTagName("input");
+      while (inputs.length > 0) {
+        for (let i = 0; i < inputs.length; ++i) {
+          if (inputs[i].type == "checkbox") {
+            if (inputs[i].checked)
+              inputs[i].outerHTML =
+                "<span style='color: #00ff00; font-size: 25px'>✔</span>";
+            else
+              inputs[i].outerHTML =
+                "<span style='color: #ff0000; font-size: 25px'>✘</span>";
+          }
+        }
+        inputs = document.getElementsByTagName("input");
+      }
+    },
+    labelCodeBlocks() {
+      const langPrefix = "language-";
+      let codeBlocks = document.getElementsByTagName("pre");
+      for (let i = 0; i < codeBlocks.length; ++i) {
+        if (codeBlocks[i].getElementsByTagName("code").length > 0) {
+          let language = undefined;
+          for (let j = 0; j < codeBlocks[i].classList.length; ++j) {
+            if (codeBlocks[i].classList[j].startsWith(langPrefix)) {
+              language = codeBlocks[i].classList[j].substring(
+                langPrefix.length
+              );
+              break;
+            }
+          }
+          if (language) {
+            language = language.charAt(0).toUpperCase() + language.slice(1);
+            let label = document.createElement("span");
+            label.classList.add("codeblock-label");
+            label.innerHTML = language;
+            codeBlocks[i].appendChild(label);
+          }
+        }
+      }
+    },
+    getPostData() {
+      this.title = postsDataJson[this.$route.params.postName].title;
+      this.timestamp = postsDataJson[this.$route.params.postName].timestamp;
+      this.tags = postsDataJson[this.$route.params.postName].tags;
+    },
+    setMarkdownSource() {
+      const markdownSource = require(`@/posts/${this.$route.params.postName}`);
+      this.markdownSource = markdownSource.default;
+      const replacer = (match) => emoji.emojify(match);
+      this.markdownSource = this.markdownSource.replace(/(:.*:)/g, replacer);
+    },
   },
   created() {
-    this.title = postsDataJson[this.$route.params.postName].title;
-    this.timestamp = postsDataJson[this.$route.params.postName].timestamp;
-    this.tags = postsDataJson[this.$route.params.postName].tags;
-    const markdownSource = require(`@/posts/${this.$route.params.postName}`);
-    this.markdownSource = markdownSource.default;
-    const replacer = (match) => emoji.emojify(match);
-    this.markdownSource = this.markdownSource.replace(/(:.*:)/g, replacer);
+    this.getPostData();
+    this.setMarkdownSource();
     window.addEventListener("resize", this.resizeHandler);
   },
   destroyed() {
@@ -106,26 +157,8 @@ export default {
   mounted() {
     Prism.highlightAll();
     this.codeOverflow();
-
-    let inputs = document.getElementsByTagName("input");
-    while (inputs.length > 0) {
-      for (let i = 0; i < inputs.length; ++i) {
-        if (inputs[i].type == "checkbox") {
-          if (inputs[i].checked)
-            inputs[i].outerHTML =
-              "<span style='color: #00ff00; font-size: 25px'>✔</span>";
-          else
-            inputs[i].outerHTML =
-              "<span style='color: #ff0000; font-size: 25px'>✘</span>";
-        }
-      }
-      inputs = document.getElementsByTagName("input");
-    }
-  },
-  computed: {
-    markdownToHtml() {
-      return marked.parse(this.markdownSource);
-    },
+    this.replaceCheckboxes();
+    this.labelCodeBlocks();
   },
 };
 </script>
@@ -178,9 +211,9 @@ export default {
 }
 .post-page pre.overflown-code {
   background-color: #24283b;
-  width: 97vw;
+  width: 96vw;
   position: relative;
-  left: calc(-48.5vw + 50%);
+  left: calc(-48vw + 50%);
   color: #a9b1d6;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -208,9 +241,37 @@ export default {
   }
 }
 
+.post-page pre {
+  position: relative;
+  padding-top: 30;
+}
+.post-page ol li pre {
+  margin-left: -12px;
+}
+.post-page .codeblock-label {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 16px;
+  text-shadow: 0px 0px #ffffff00;
+  color: #565f89;
+}
+@media screen and (min-width: 601px) {
+  .post-page .codeblock-label {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .post-page .codeblock-label {
+    font-size: 11px;
+  }
+}
+
 .theme--dark.v-application code {
   background-color: #ffffff00;
   padding: 2px;
+  text-shadow: 0px 0px #ffffff00;
+  font-family: monospace, monospace;
 }
 pre code {
   display: block;
