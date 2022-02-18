@@ -1,94 +1,218 @@
-# The largest heading
+## Code Highlighting examples
 
-## The second largest heading
+<br />
 
-### Headings 3
-
-#### Heading 4
-
-##### Heading 5
-
-###### The smallest heading
-
-Text that is not a quote
-
-> Text that is a quote
-
-Use `git status` to list all new or modified files that haven't yet been committed.
-Some basic Git commands are:
-
-```git
-git status
-git add
-git commit
+1. keyword
+```JavaScript
+for (const foo of bar) {
+        if (foo === 'foobar') break;
+        await foo;
+}
 ```
 
+2. builtin
 ```python
-from os import listdir, getcwd
-from os.path import isfile, join
-from json import dump, load
-from datetime import datetime
-
-
-POSTS_DIR = f"{getcwd()}/src/posts/"
-
-posts = [f for f in listdir(POSTS_DIR) if isfile(join(POSTS_DIR, f))]
-
-new_posts = []
-with open(f'{getcwd()}/src/postsData.json') as posts_data_file:
-    posts_data = load(posts_data_file)
-old_posts = []
-for post_file in posts_data:
-    old_posts.append(post_file)
-for post in posts:
-    if post not in old_posts:
-        new_posts.append(post)
-
-print(f"{len(new_posts)} new posts found!")
-
-for post in new_posts:
-    print(f"New post: {post}")
-    title = input("Title: ")
-    tags = list(input("Tags: ").split(', '))
-    image = input("Image: ")
-    post_data = {
-        "title": title,
-        "tags": tags,
-        "image": image,
-        "timestamp": datetime.now().strftime("%H:%M %A, %-d %b")
-    }
-    posts_data[post] = post_data
-    print("Post added!")
-
-with open(f'{getcwd()}/src/postsData.json', 'w') as posts_data_file:
-    dump(posts_data, posts_data_file, ensure_ascii=False, indent=2)
+pi = round(float('3.14159'), 2)
+```
+```Typescript
+type SearchFunc = (source: string, subStr: string) => boolean;
 ```
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+3. class-name
+```JavaScript
+class Rectangle extends Square { /* ... */ }
+```
+```Csharp
+public class CameraController : MonoBehaviour { /* ... */ }
+```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit dignissim sodales ut eu sem integer vitae justo. Metus aliquam eleifend mi in. Est placerat in egestas erat imperdiet sed euismod. Accumsan lacus vel facilisis volutpat est. Id donec ultrices tincidunt arcu non sodales neque. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Turpis egestas integer eget aliquet nibh praesent tristique. Elit pellentesque habitant morbi tristique. Vitae elementum curabitur vitae nunc sed velit dignissim sodales. Aliquet enim tortor at auctor urna nunc.
+4. function
+```JavaScript
+function isEven(number) {
+	    return Number(number) % 2 === 0;
+}
+const isOdd = (number) => !isEven(number);
+```
 
-Scelerisque in dictum non consectetur a erat nam. Purus sit amet luctus venenatis lectus. Semper eget duis at tellus at urna condimentum mattis. Feugiat in ante metus dictum at tempor commodo ullamcorper a. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Lorem ipsum dolor sit amet consectetur adipiscing elit. Euismod quis viverra nibh cras pulvinar mattis nunc sed. Facilisis volutpat est velit egestas dui id ornare arcu. Faucibus pulvinar elementum integer enim neque volutpat. Sem nulla pharetra diam sit. Purus sit amet luctus venenatis lectus magna. Fermentum iaculis eu non diam.
+5. boolean
+```JavaScript
+console.log(true === false); // prints false
+console.log(true === !false); // prints true
+```
 
-- George Washington
-- John Adams
-- Thomas Jefferson
+6. number
+```Python
+print(3.14159 * 42)
+print(1e100 + .001j)
+return foo & 0xdeadbeef
+```
 
-1. James Madison
-2. James Monroe
-3. John Quincy Adams
+7. string
+```JavaScript
+let greeting = 'Hello World!';
+```
 
-4. First list item
-   - First nested list item
-     - Second nested list item
+8. char
+```Elm
+['A', 'z', '0', '-', '\t', '\u{2728}']
+```
 
-- [x] #739
-- [ ] <https://github.com/octo-org/octo-repo/issues/740>
-- [ ] Add delight to the experience when all tasks are complete :tada:
+9. symbol
+```Smalltalk
+#myFirstSymbol "#myFirstSymbol is a symbol in Smalltalk"
+```
 
-@octocat :+1: This PR looks great - it's ready to merge! :anger:
+10. regex
+```JavaScript
+let entity = /&#x?[\da-f]{1,8};/;
+```
 
-```bash
-$ echo "hello world"
-hello world
+11. url
+```css
+body {
+	    background: url(foo.png);
+}
+```
+```Markdown
+[Prism](https://prismjs.com) is a cool syntax highlighter.
+```
+
+12. operator
+```JavaScript
+x += (y + 4 >> -z === w) ? b ** c : ~a;
+```
+
+13. variable
+```Bash
+echo $STRING
+args=("$@")
+echo ${args[0]} ${args[1]} ${args[2]}
+```
+
+14. constant
+```JavaScript
+const PI = 3.14159;
+```
+```C
+fprintf(stdout, "hello world\n");
+```
+
+15. property
+```CSS
+body {
+	    color: red;
+	    line-height: normal;
+}
+```
+```JSON
+{
+        "data": { "labels": ["foo", "bar"], },
+        "error": null,
+        "status": "Ok"
+}
+```
+
+16. punctuation
+```Python
+def median(pool):
+        copy = sorted(pool)
+        size = len(copy)
+        if size % 2 == 1:
+            return copy[(size - 1) / 2]
+        else:
+            return (copy[size/2 - 1] + copy[size/2]) / 2
+```
+
+17. important
+```CSS
+body {
+	    color: red !important;
+}
+```
+```Markdown
+# This is a heading. Headings are important.
+```
+
+18. comment
+```Markup
+<!-- Here's a comment -->
+<style>
+	/* Here's another comment */
+</style>
+<script>
+// Here's yet another comment
+</script>
+```
+
+19. tag
+```Markup
+<p>Hello World!</p>
+```
+
+20. attr-name, attr-value
+```Markup
+<p id="greeting">Hello World!</p>
+<video width="1280" height="720" allowfullscreen controls>
+        <source src="hello_world.mp4" type="video/mp4" />
+</video>
+```
+
+21. namespace
+```Java
+class Foo extends foo.bar.Foo {
+	    java.util.List<foo.bar.Foo.Bar> bar(foo.bar.Baz bat) {
+            throw new java.lang.UnsupportedOperationException();
+	    }
+}
+```
+
+22. prolog
+```Markup
+<?xml version="1.0" encoding="utf-8"?>
+<svg></svg>
+```
+
+23. doctype
+```Markup
+<!DOCTYPE html>
+<html></html>
+```
+
+24. cdata
+```Markup
+<ns1:description><![CDATA[
+  CDATA is <not> magical.
+]]></ns1:description>
+```
+
+25. entity
+```Markup
+&amp; &#x2665; &#160; &#x152;
+```
+
+26. bold
+```Markdown
+    **I am bolded text!**
+```
+
+27. italic
+```Markdown
+    *I am italicised text!*
+```
+
+28. atrule
+```CSS
+@font-family {
+        font-family: Questrial;
+        src: url(questrial.otf);
+}
+@media screen and (min-width: 768px) { /* ... */ }
+```
+
+29. selector
+```CSS
+section h1,
+#features li strong,
+header h2,
+footer p { /* ... */ }
 ```

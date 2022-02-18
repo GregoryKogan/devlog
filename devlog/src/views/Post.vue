@@ -28,6 +28,8 @@ import "prismjs/components/prism-python.min.js";
 import "prismjs/components/prism-javascript.min.js";
 import "prismjs/components/prism-css.min.js";
 import "prismjs/components/prism-clike.min.js";
+import "prismjs/components/prism-c.min.js";
+import "prismjs/components/prism-cpp.min.js";
 import "prismjs/components/prism-bash.min.js";
 import "prismjs/components/prism-django.min.js";
 import "prismjs/components/prism-docker.min.js";
@@ -40,6 +42,10 @@ import "prismjs/components/prism-kotlin.min.js";
 import "prismjs/components/prism-markdown.min.js";
 import "prismjs/components/prism-sql.min.js";
 import "prismjs/components/prism-typescript.min.js";
+import "prismjs/components/prism-csharp.min.js";
+import "prismjs/components/prism-elm.min.js";
+import "prismjs/components/prism-smalltalk.min.js";
+import "prismjs/components/prism-java.min.js";
 
 marked.setOptions({
   langPrefix: "language-",
@@ -230,6 +236,67 @@ code .token.builtin {
 }
 code .token.string {
   color: #9ece6a;
+}
+code .token.class-name {
+  color: #9ece6a;
+}
+code .token.function {
+  color: #7aa2f7;
+}
+code .token.char {
+  color: #9ece6a;
+}
+code .token.symbol {
+  color: #bb9af7;
+}
+code .token.regex {
+  color: #e0af68;
+}
+code .token.url {
+  color: #73daca;
+}
+code .token.constant {
+  color: #ff9e64;
+}
+code .token.property {
+  color: #7dcfff;
+}
+code .token.important {
+  color: #f7768e;
+}
+code .token.comment {
+  color: #565f89;
+}
+code .token.tag {
+  color: #f7768e;
+}
+code .token.attr-name {
+  color: #bb9af7;
+}
+code .token.attr-value {
+  color: #c0caf5;
+}
+code .token.namespace {
+  color: #7dcfff;
+  opacity: 1;
+}
+code .token.prolog {
+  color: #565f89;
+}
+code .token.doctype {
+  color: #565f89;
+}
+code .token.cdata {
+  color: #565f89;
+}
+code .token.entity {
+  color: #ff9e64;
+}
+code .token.atrule {
+  color: #bb9af7;
+}
+code .token.selector {
+  color: #2ac3de;
 }
 
 .post-page img {
