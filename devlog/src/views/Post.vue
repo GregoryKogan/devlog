@@ -359,6 +359,9 @@ code .token.atrule {
 code .token.selector {
   color: #2ac3de;
 }
+code .token.variable {
+  color: #c0caf5;
+}
 
 .post-page img {
   display: block;

@@ -44,11 +44,11 @@ export default {
 <style>
 .post-preview {
   max-width: 800px;
-  padding-top: 20px;
+  padding-top: 7px;
   padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 40px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 25px;
   background: #1a1b26;
   box-shadow: 14px 14px 29px #13131b, -14px -14px 29px #212331;
 }
@@ -57,16 +57,12 @@ export default {
   transition: all 0.1s ease-in-out;
   cursor: pointer;
   overflow: hidden;
-  border: solid 5px #1a1b26;
+  border: solid 4px #24283b;
   border-radius: 20px;
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  box-shadow: 5px 5px 10px #13131b, -5px -5px 10px #212331;
-}
-.post-preview .post-img:hover {
-  transition: all 0.1s ease-in-out;
-  box-shadow: 30px 30px 60px #13141c, -30px -30px 60px #212230;
+  box-shadow: 10px 10px 20px #14151e, -10px -10px 20px #20212e;
 }
 
 .post-preview-title {
