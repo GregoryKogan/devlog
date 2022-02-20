@@ -1,8 +1,8 @@
 <template>
   <div class="home-page">
-    <h1 style="margin-bottom: 20px; margin-top: 10px">Devlog</h1>
+    <devlog-header />
     <div v-for="key in Object.keys(postsData)" :key="key">
-      <PostPreview
+      <post-preview
         :post="postsData[key]"
         :file="key"
         style="margin-left: auto; margin-right: auto"
@@ -15,10 +15,11 @@
 <script>
 import postsDataJson from "@/postsData.json";
 import PostPreview from "@/components/PostPreview.vue";
+import DevlogHeader from "@/components/DevlogHeader.vue";
 
 export default {
   name: "Home",
-  components: { PostPreview },
+  components: { PostPreview, DevlogHeader },
   data: () => ({
     postsData: postsDataJson,
   }),
