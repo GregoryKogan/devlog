@@ -69,6 +69,10 @@ export default {
   cursor: pointer;
   color: #c0caf5;
 }
+.v-card__text,
+.v-card__title {
+  word-break: normal !important;
+}
 .post-preview-title:hover {
   color: #7aa2f7;
   text-decoration: underline;
