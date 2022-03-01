@@ -1,12 +1,16 @@
 {
-  "InitialCommit.md": {
-    "title": "Initial commit",
+  "HowToMakeVueMarkdownBlog.md": {
+    "title": "How to make Markdown blog using Vue and Github pages",
     "tags": [
-      "some",
-      "tags",
-      "python"
+      "Vue",
+      "Markdown",
+      "Github pages",
+      "blogging",
+      "syntax highlighting",
+      "Python",
+      "frontend"
     ],
-    "image": "https://www.denofgeek.com/wp-content/uploads/2019/11/Attack-on-Titan-Season-4-Release-Date-Trailer-News.jpg",
-    "timestamp": "13:43 Sunday, 13 Feb"
+    "image": "https://texterra.ru/upload/iblock/933/header.jpg",
+    "timestamp": "21:13 Sunday, 20 Feb"
   }
 }
