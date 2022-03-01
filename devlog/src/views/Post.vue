@@ -371,7 +371,6 @@ code .token.variable {
   margin-bottom: 20px;
   width: 95%;
   max-width: 800px;
-  max-height: 500px;
   transition: all 0.1s ease-in-out;
   border: solid 5px #1a1b26;
   border-radius: 20px;
