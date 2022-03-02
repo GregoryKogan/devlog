@@ -502,10 +502,7 @@ Now images should look like this:
 
 ##### Bonus - image hosting
 
-You can store your images locally, but I do not recommend doing this
-because that would slow down loading of blog's page. The 
-preferable approach is to host you images somewhere on the internet.
-I personally use [Imgur](https://imgur.com/) for that, but there are plenty of various similar services.
+If you prefer to store images locally, you can, but I don't recommend doing so because it will slow down the blog's page loading. Storing your images somewhere on the internet is a better idea. I use [Imgur](https://imgur.com/), but there are plenty other services for that.
 
 #### Checklists
 
@@ -513,7 +510,7 @@ Default look of checkboxes is goddamn disgusting.
 
 ![Disgusting checkboxes](https://imgur.com/LrPrGrS.png)
 
-I really tried to style those with CSS, but I didn't succeed. Alternative solution to this problem is JavaScript! As long as these checkboxes are static we can just replace them with gorgeous emojis.
+I tried to style those with CSS, but it didn't work, so I used JavaScript. As long as these checkboxes are static we can simply replace them with some gorgeous emojis.
 
 In `Post.vue`:
 ```JavaScript
@@ -583,7 +580,7 @@ Weird, isn't it? Well, it's all going to be fixed after we apply syntax highligh
 
 **Bonus 1 - large code snippets**
 
-If you want to apply different styles for little and large code snippets, you can assign CSS classes to them like this:
+If you want to apply different styles for small and large code snippets, you can assign CSS classes to them like this:
 
 ```JavaScript
 methods: {
@@ -658,7 +655,7 @@ mounted() {
 
 ### Syntax highlighting
 
-First of all, of course you can follow `Marked.js` [documentation](https://marked.js.org/using_advanced#highlight) and use `highlight.js` like this:
+Of course you can follow `Marked.js` [documentation](https://marked.js.org/using_advanced#highlight) and use `highlight.js` like this:
 
 ```Bash
 npm install --save highlight.js
@@ -678,7 +675,7 @@ marked.setOptions({
 });
 ```
 
-But, I hate how `highlight.js` does it's work. I prefer more advanced and customizable `Prism.js`.
+But, I hate how `highlight.js` functions, so I prefer `Prism.js` as it's more advanced and customizable.
 
 ```Bash
 npm install --save prismjs
@@ -822,7 +819,7 @@ You can read list of all supported languages [here](https://prismjs.com/)
 
 #### Result
 
-Result of all the above should look something like this:
+Result of all of above should look like this:
 ![CSS result](https://imgur.com/UpOP6uA.png)  
 
 ### Deployment
@@ -844,9 +841,7 @@ Replace 'my-blog' with your repository's name.
 
 #### Deploy script
 
-Assuming you already have github repository and connected to it,
-all you need to do is create `deploy.sh` script in root of your project
-and put this code inside of it:
+Assuming you already got and connected a github repository, all you need to do is to create `deploy.sh` script in the root of your project and put this code into of it:
 
 ```Bash
 #!/usr/bin/env sh
@@ -901,7 +896,6 @@ You can read more about Vue deployment [here](https://cli.vuejs.org/guide/deploy
 ### Bye-bye
 
 Thank you for reading through this tutorial. I hope it helped you
-in some way. All code for the blog you're reading right now is on
-[project's Github repo](https://github.com/GregoryKogan/Devlog).
+in some way. All code for the blog you've just read is on [project's Github repo](https://github.com/GregoryKogan/Devlog).
 
 Bye!
