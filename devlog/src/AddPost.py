@@ -8,16 +8,10 @@ POSTS_DIR = f"{getcwd()}/src/posts/"
 
 posts = [f for f in listdir(POSTS_DIR) if isfile(join(POSTS_DIR, f))]
 
-new_posts = []
 with open(f'{getcwd()}/src/postsData.json') as posts_data_file:
     posts_data = load(posts_data_file)
-old_posts = []
-for post_file in posts_data:
-    old_posts.append(post_file)
-for post in posts:
-    if post not in old_posts:
-        new_posts.append(post)
-
+old_posts = list(posts_data)
+new_posts = [post for post in posts if post not in old_posts]
 print(f"{len(new_posts)} new posts found!")
 
 for post in new_posts:
