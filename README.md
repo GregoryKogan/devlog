@@ -1,2 +1,2 @@
 # Dev-Blog
-My attempt in blogging my path as a developer
+Step by step tutorial for creating Vue blog (+ template)
