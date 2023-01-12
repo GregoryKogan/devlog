@@ -29,4 +29,7 @@ app {
   background-color: #1a1b26;
   color: #c0caf5;
 }
+body {
+  background-color: #1a1b26;
+}
 </style>
