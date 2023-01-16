@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Post from "../views/Post.vue";
+import HomeView from "../views/HomeView.vue";
+import PostView from "../views/PostView.vue";
 
 Vue.use(VueRouter);
 
@@ -9,12 +9,12 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: HomeView,
   },
   {
     path: "/post/:postName",
     name: "Post",
-    component: Post,
+    component: PostView,
   },
 ];
 

@@ -18,7 +18,7 @@ import PostPreview from "@/components/PostPreview.vue";
 import DevlogHeader from "@/components/DevlogHeader.vue";
 
 export default {
-  name: "Home",
+  name: "HomeView",
   components: { PostPreview, DevlogHeader },
   data: () => ({
     postsData: postsDataJson,

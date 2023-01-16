@@ -59,7 +59,7 @@ marked.setOptions({
 });
 
 export default {
-  name: "Post",
+  name: "PostView",
   components: { BackButton },
   data: () => ({
     markdownSource: undefined,
