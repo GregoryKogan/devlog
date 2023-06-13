@@ -1,4 +1,4 @@
-# [Dev-Blog](https://gregorykogan.github.io/Devlog)
+# devlog
 
 Step by step tutorial for creating Vue blog (+ template)
 
