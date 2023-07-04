@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.31.0",
-    "marked": "^4.0.12",
+    "marked": "^5.1.0",
     "node-emoji": "^1.11.0",
     "prismjs": "^1.29.0",
     "pygmentize-bundled": "^2.3.0",
